@@ -1,0 +1,34 @@
+<app-header />
+<main>
+  <ul id="users">
+    <!-- this @for and @if syntax is introduced from Angular 17. -->
+    @for (user of users; track user.id) {
+    <li>
+      <app-user
+        [user]="user"
+        [selected]="user.id === selectedUserId"
+        (select)="onSelectUser($event)"
+      />
+    </li>
+    }
+
+    <!-- before this, we used structural directives - &ngFor -->
+
+    <!-- <li *ngFor="let user of users">
+      <app-user [user]="user" (select)="onSelectUser($event)" />
+    </li> -->
+  </ul>
+
+  <!-- 
+  <app-task *ngIf="selectedUser; else fallback" [name]="selectedUser!.name" />
+  <ng-template #fallback>
+    <p id="fallback">Select a user to see their tasks!</p>
+  </ng-template> 
+  -->
+
+  @if (selectedUser){
+  <app-tasks [userId]="selectedUser.id" [name]="selectedUser.name" />
+  } @else {
+  <p id="fallback">Select a user to see their tasks!</p>
+  }
+</main>
