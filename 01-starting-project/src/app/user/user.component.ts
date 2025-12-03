@@ -35,16 +35,15 @@ import {
   output,
 } from '@angular/core';
 import { User } from './user.model';
-import { CardComponent } from '../shared/card/card.component';
 
 // with interface, you can only define object types, but with the type keyword, you can also define other types
 
 @Component({
   selector: 'app-user',
-  standalone: true,
+  // standalone: true,
   templateUrl: './user.component.html',
   styleUrl: './user.component.css',
-  imports: [CardComponent],
+  // imports: [CardComponent],
 })
 export class UserComponent {
   // this is how we handle the input data that we get from outside the component
